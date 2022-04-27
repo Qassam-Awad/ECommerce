@@ -17,6 +17,18 @@ public class ECommerceApplication {
 	@Bean
 	CommandLineRunner runner(ProductService productService) {
 		return args -> {
+//			try {
+//				CategoryDto instance;
+//				Random random = new Random(System.currentTimeMillis());
+//				for (int i = 0; i < 2; i++) {
+//					instance = new CategoryDto();
+//					instance.setName("default category " + random.nextInt());
+//					instance.setDescription("default category " + random.nextInt());
+//					categoryService.createCategory(instance);
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
 			productService.save(new Product(1L, "TV Set", 300.00, "http://placehold.it/200x100"));
 			productService.save(new Product(2L, "Game Console", 200.00, "http://placehold.it/200x100"));
 			productService.save(new Product(3L, "Sofa", 100.00, "http://placehold.it/200x100"));
