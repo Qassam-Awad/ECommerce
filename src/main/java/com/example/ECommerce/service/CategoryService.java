@@ -1,7 +1,9 @@
 package com.example.ECommerce.service;
 
 import com.example.ECommerce.dto.CategoryDto;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -20,10 +22,11 @@ import java.util.List;
  * When we talk about an interface and define capabilities that we promise to provide, we are talking about establishing a contract about what the object can do.
  * Author: Mohammed Kharma
  */
+@Validated
 public interface CategoryService {
     CategoryDto createCategory(CategoryDto CategoryDto);
 
-    List<CategoryDto> getAllCategories();
+    @NotNull List<CategoryDto> getAllCategories();
 
     CategoryDto getCategoryById(long id);
 

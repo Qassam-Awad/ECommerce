@@ -1,21 +1,17 @@
 package com.example.ECommerce.controller;
 
-import edu.bzu.app.restapi.dto.CategoryDto;
-import edu.bzu.app.restapi.exception.BadRequestException;
-import edu.bzu.app.restapi.service.CategoryService;
+import com.example.ECommerce.dto.CategoryDto;
+import com.example.ECommerce.exception.BadRequestException;
+import com.example.ECommerce.service.CategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
-/**
- * Author: Mohammed Kharma
- */
-
 @RestController
 @RequestMapping("/api/category")
 public class CategoryResource {
