@@ -1,6 +1,7 @@
 package com.example.ECommerce.controller;
 
 import com.example.ECommerce.dto.CustomerDto;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,18 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Author: Mohammed Kharma
- */
 @RestController
 public class CustomerController {
 
-    //    @GetMapping (path = "/student", produces = MediaType.APPLICATION_XML_VALUE)
-//    @GetMapping(value = "/student/v2/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @GetMapping(value = "/student", produces = MediaType.APPLICATION_JSON_VALUE)
     @GetMapping(value = "/student")
     public CustomerDto getSCustomer() {
-        return new CustomerDto("Mohammed", "Kharma");
+        return new CustomerDto("qassam", "awad");
     }
 
     @GetMapping(value = "/students")
@@ -38,23 +33,15 @@ public class CustomerController {
         return ResponseEntity.ok(new CustomerDto("Mohammed", "Ahmad"));
     }
 
-    //path variable,  uri template variable   {firstname}/{lastName}
-    //in order ot bind value of URI template variable to method parameter, we use @PathVariable
     @GetMapping(value = "/student/{firstName}/{lastName}")
     public ResponseEntity<CustomerDto> getCustomer(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName) {
         return ResponseEntity.ok(new CustomerDto(firstName, lastName));
     }
 
-    //build rest API to handle query params
-    ///student?firstName=mohammad
     @GetMapping(value = "/studentRequestParam")
     public ResponseEntity<CustomerDto> getCustomerRequestParam(@RequestParam("firstName") String firstName,
             @RequestParam(name = "lastName") String lastName) {
         return ResponseEntity.ok(new CustomerDto(firstName, lastName));
     }
-//    @GetMapping(value = "/studentx")
-//    public ResponseEntity<CustomerDto> getCustomerx(@RequestParam("firstName") String firstName,
-//                                                            @RequestParam(name = "lastName") String lastName) {
-//        return ResponseEntity.ok(new CustomerDto(firstName, lastName));
-//    }
+
 }

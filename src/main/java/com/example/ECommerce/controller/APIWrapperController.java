@@ -11,24 +11,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Author: Mohammed Kharma
- */
 @RestController
 public class APIWrapperController {
     private final Logger log = LoggerFactory.getLogger(APIWrapperController.class);
 
     @Autowired
-    //@Autowired annotation is used for dependency injection.In spring boot application, all loaded beans are eligible for auto wiring to another bean. The annotation @Autowired in spring boot is used to auto-wire a bean into another bean.
     @Qualifier(value = "restTemplate")
     RestTemplate restTemplate;
 
-//    public APIWrapperController(RestTemplate restTemplate) {
-//        this.restTemplate = restTemplate;
-//    }
+    public APIWrapperController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @GetMapping("/api/user")
-    public ResponseEntity<User[]> all(@RequestParam(value = "name", defaultValue = "mohammed") String name) {
+    public ResponseEntity<User[]> all(@RequestParam(value = "name", defaultValue = "qassam") String name) {
 //        RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<User[]> response =
                 restTemplate.getForEntity(

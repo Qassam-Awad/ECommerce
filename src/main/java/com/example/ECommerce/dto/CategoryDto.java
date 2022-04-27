@@ -6,11 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-/**
- * Author: Mohammed Kharma
- */
-@Data //Generates getters for all fields, a useful toString method, and hashCode and equals implementations that check all non-transient fields
-
+@Data
 public class CategoryDto {
     private Long id;
 

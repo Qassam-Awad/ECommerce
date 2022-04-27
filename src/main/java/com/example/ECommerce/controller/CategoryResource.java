@@ -17,34 +17,23 @@ import java.util.List;
 public class CategoryResource {
     private final Logger log = LoggerFactory.getLogger(CategoryResource.class);
 
-    //    @Autowired //@Autowired annotation is used for dependency injection.In spring boot application, all loaded beans are eligible for auto wiring to another bean. The annotation @Autowired in spring boot is used to auto-wire a bean into another bean.
-    private CategoryService categoryService; //the use of interface rather than class is important for loose coupling
+    @Autowired
+    private CategoryService categoryService;
 
-    // Constructor based  injection
     public CategoryResource(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
     @GetMapping
     public ResponseEntity<List<CategoryDto>> getAllCategories() {
-        return ResponseEntity.ok().body(categoryService.getAllCategories()); //ResponseEntity represents an HTTP response, including headers, body, and status.
+        return ResponseEntity.ok().body(categoryService.getAllCategories());
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDto> getCategoryById(
             @PathVariable(name = "id") long id) {
         return ResponseEntity.ok(categoryService.getCategoryById(id));
     }
 
-    /**
-     * When Spring Boot finds an argument annotated with @Valid,
-     * it automatically bootstraps the default JSR 380 implementation — Hibernate Validator — and
-     * validates the argument. When the target argument fails to pass the validation,
-     * Spring Boot throws a MethodArgumentNotValidException exception.
-     *
-     * @param categoryDto
-     * @return
-     */
     @PostMapping
     public ResponseEntity<CategoryDto> createCategory
     (@Valid @RequestBody CategoryDto categoryDto) {
@@ -63,11 +52,10 @@ public class CategoryResource {
         return new ResponseEntity<>(categoryService.updateCategory(categoryDto, id), HttpStatus.OK);
     }
 
-    //    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCategory(@PathVariable(name = "id") long id) {
         categoryService.deleteCategoryById(id);
-//        return ResponseEntity.ok().headers(<add warnings....>).build();
         return new ResponseEntity<>("Deleted successfully.", HttpStatus.OK);
     }
 }

@@ -15,12 +15,11 @@ import java.io.Serializable;
  */
 
 
-@Data  //Generates getters for all fields, a useful toString method, and hashCode and equals implementations that check all non-transient fields
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 
-@AllArgsConstructor   //automatically generates a constructor with a parameter for each field in your class
-@NoArgsConstructor     // generates a constructor with no parameter
-
-@Entity                 // specifies that the class is an entity and is mapped to a database table
+@Entity
 
 @Table
 public class Person implements Serializable {

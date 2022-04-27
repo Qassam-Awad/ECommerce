@@ -1,7 +1,5 @@
 package com.example.ECommerce.dto;
-/**
- * Author: Mohammed Kharma
- */
+
 public class CustomerDto {
     private String firstname;
     private String lastname;
